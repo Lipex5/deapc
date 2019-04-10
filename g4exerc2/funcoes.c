@@ -44,4 +44,4 @@ int cifrastring(char *str, int desvio)
     }
 
     return num;
-}
+} 
