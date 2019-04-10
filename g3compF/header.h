@@ -1,0 +1,2 @@
+char* lefrase();
+char* lecaracar();
