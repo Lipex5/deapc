@@ -9,4 +9,4 @@ typedef struct ResCifra
     char *nomef;
 }ResCifra;
 
-ResCifra* cifra_file(FILE *fin, int desvio, FILE *fout);
+ResCifra* cifra_file(char *fin, int desvio, char *fout);

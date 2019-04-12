@@ -48,14 +48,29 @@ int cifrastring(char *str, int desvio)
     return strlen(str) - num;
 } 
 
-ResCifra* cifra_file(FILE *fin, int desvio, FILE *fout)
+ResCifra* cifra_file(char* fin, int desvio, char* fout)
 {
-    ResCifra valores;
+    ResCifra *vals = malloc(sizeof(ResCifra));
+    FILE *filein = fopen(fin, "r");
+    FILE *fileout = fopen(fout, "w");
+    
     char buffer[100];
+    vals->desvio = desvio;
+    vals->nomef = fin;
+    vals->validos = 0;
+    vals->totalcar = 0;
 
-    while (!feof(fin))
+    while (!feof(filein))
     {
-        fgets(buffer, 100, fin);
-        valores.validos = cifrastring(buffer, desvio);
+        fgets(buffer, 100, filein);
+        vals->validos += cifrastring(buffer, desvio);
+        vals->totalcar += strlen(buffer);
+        fputs(buffer, fileout);
+        fputs("\n", fileout);
     }
+    fclose(filein);
+    fclose(fileout);
+    return vals;
 }
+
+
