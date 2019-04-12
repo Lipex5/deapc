@@ -51,13 +51,11 @@ int cifrastring(char *str, int desvio)
 ResCifra* cifra_file(FILE *fin, int desvio, FILE *fout)
 {
     ResCifra valores;
-    fin = fopen(fin, "r");
-    fout = fopen(fout, "w");
     char buffer[100];
 
     while (!feof(fin))
     {
         fgets(buffer, 100, fin);
-        valores.totalcar = cifrastring(buffer, desvio);
+        valores.validos = cifrastring(buffer, desvio);
     }
 }
