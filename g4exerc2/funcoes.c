@@ -60,5 +60,4 @@ ResCifra* cifra_file(FILE *fin, int desvio, FILE *fout)
         fgets(buffer, 100, fin);
         valores.totalcar = cifrastring(buffer, desvio);
     }
-
 }
